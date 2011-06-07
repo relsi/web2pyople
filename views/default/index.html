@@ -1,0 +1,56 @@
+{{include 'header.html'}}  
+<body onload="initialize()">
+
+<div id="container">
+
+    <div id="header">
+       <div id="menu"> <!-- beginning of the menu -->
+           <ul>
+               {{=LI(A(T('Home'),_href=URL(r=request,c='default',f='index')))}}
+               {{ if 'auth' in globals():}}
+               {{if not auth.user:}}
+               {{=LI(A(T('Register'),_href=URL(r=request,c='default',f='user/register')))}} 
+               {{pass}}
+           </ul>
+       </div> <!-- end of the menu -->
+    </div>
+{{include 'header.html'}}
+
+    <div id="sub-header"> <!-- beginning of the user position -->
+         {{if not auth.is_logged_in():}}
+             <div id="login">
+             {{form=auth.login(next=URL(r=request, args=request.args))}}
+             {{=form.custom.begin}}
+             <input class="email"   name="email" type="text" value="" />
+             <input class="senha" name="password" type="password" value="" />
+             <input class="submit" type="submit" value="" />
+             {{=form.custom.end}} 
+             </div>
+          {{else:}}
+            <div id="logado">
+            <img class="avatar" src="{{=URL(r=request, c='default', f='download', args=auth.user.avatar)}}" height="60px"/> 
+            <ul>
+             {{=LI(T('Welcome %s',auth.user.first_name))}} 
+             {{=LI(A(T('logout'),_href=URL(r=request,c='default',f='user/logout')))}} 
+             {{=LI(A(T('Edit Profile'),_href=URL(r=request,c='default',f='user/profile')))}}
+             {{=LI(A(T('Change Password'),_href=URL(r=request,c='default',f='user/change_password')))}}
+            </ul>
+            </div>   
+         {{pass}}
+         {{pass}}
+    </div> <!-- end of the user position -->
+ 
+    <div id="wrapper"> <!-- beginning of the map -->
+        <div id="mapa">
+          <div id="map_canvas"  style="width: 1024px; height: 400px"> </div>
+        </div>
+    </div><!-- end of the map -->
+ 
+    <div id="content"> <!-- total of users -->   </div>  
+{{include 'footer.html'}}
+    
+</div>
+
+  </body>
+
+</html>

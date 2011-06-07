@@ -1,0 +1,89 @@
+{{include 'header.html'}}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+//script to get the latitude and longitude of the marker and save in database
+function initialize() {
+     geocoder = new google.maps.Geocoder();
+
+    var latlng = new google.maps.LatLng(1.0546292336327017, -17.929675000000003);
+    var myOptions = {
+      zoom: 2,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    //initializes a map with the options set up above 
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    //create a custom label, alvo.png, and places it in a central position on the map
+    var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map,
+      draggable: true,  
+      icon: 'http://localhost/web2people/static/images/alvo.png'
+      //change to the url of your application
+      
+    });
+    //event to get the latitude and longitude of the marker when it is moved on the map
+    //... and displaying the input text
+    google.maps.event.addListener(marker, 'dragend', function() {
+    var markerLatLng = marker.getPosition();
+    var longitude = markerLatLng.lng()
+    var latitude = markerLatLng.lat();
+    document.getElementById("auth_user_lat").value=latitude;
+    document.getElementById("auth_user_lgt").value=longitude;
+    document.getElementById("latitude").focus();
+           
+  });
+
+}
+
+</script>
+<body onload="initialize()"> 
+<div id="container">
+ <div id="header">
+       <div id="menu"><!-- beginning of the menu -->
+           <ul>
+               {{=LI(A(T('Home'),_href=URL(r=request,c='default',f='index')))}}
+               {{ if 'auth' in globals():}}
+               {{if not auth.user:}}
+               {{=LI(A(T('Register'),_href=URL(r=request,c='default',f='user/register')))}} 
+               {{pass}}
+           </ul>
+       </div> <!-- end of the menu -->
+    </div>
+
+{{if request.args(0)=='login':}}
+<div id="login"> <!-- request user login -->
+{{=form}}
+</div>
+
+<!-- register form -->
+{{elif request.args(0)=='register':}}
+{{=B(T('Zoom in the map and drag the target to mark your home/work location.'))}}
+<div id="left">
+{{=form}}
+</div>
+<div id="mapinha"><!-- beginning of the user location set map -->
+<div id="map_canvas" style="width:600px; height:500px"></div>
+</div><!-- end of the user location set map -->
+<!--end  register form -->
+
+ <!-- profile form -->
+{{elif request.args(0)=='profile':}}
+<div id="left">
+{{=form}}
+</div>
+<div id="mapinha"><!-- beginning of the user location set map -->
+<div id="map_canvas" style="width:600px; height:500px"></div>
+</div><!-- end of the user location set map -->
+ <!-- end profile form -->
+
+<!-- change password form -->
+{{elif request.args(0)=='change_password':}}
+<div id="left">
+{{=form}}
+</div>
+
+{{pass}}
+
+{{include 'footer.html'}}

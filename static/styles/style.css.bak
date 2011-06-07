@@ -1,0 +1,165 @@
+html{margin:0;padding:0}
+
+body{
+   font-size: 11px;
+    font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+    color:#564b47;
+    padding:0px;
+    margin:0px;
+    background: url(../images/bg.png) repeat-x;
+}
+
+
+
+#container{
+    width: 1024px;
+    padding: 0px;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#header{
+    background-color:#F3F2ED;
+    width:1024px;
+    height:30px;
+}
+
+
+#menu {
+    padding: 0px;
+    margin: 0px;
+    width: 1024px; 
+    height: 25px;
+    float: right;
+    }
+    
+#menu ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    position: relative;
+    top: 10px;
+    
+    }
+    
+#menu li {
+    width: 100px;
+    height: 34px;
+    float: left;
+    position: relative;
+    list-style: none;
+    margin: 0px 3px;
+    }
+    
+
+
+#sub-header{
+    background-color:#F3F2ED;
+    background: url(../images/web2py_logo.png) no-repeat;
+    margin: 6px 0px;
+    width:1024px;
+    height:153px;
+}
+
+#login{
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 10px;
+    width:227px;
+    height:152px;
+    background: url(../images/login.png) no-repeat;
+}
+.email {
+    float: right;
+    position: relative;
+    top: 50px;
+    right: 30px;
+    width:155px;
+    background: none;
+    border: none; 
+}
+
+.senha{
+    float: right;
+    position: relative;
+    top: 75px;
+    right: 30px;
+    width:155px;
+    background: none;
+    border: none;
+}
+
+.submit{
+    float: right;
+    position: relative;
+    top: 93px;
+    right: -100px;
+     width:55px;
+       background: none;
+    border: none;
+}
+
+#logado{
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 10px;
+    width:227px;
+    height:152px;
+    
+}
+#logado .avatar{
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 10px;
+    width:60px;
+    height:60px;
+}
+
+
+#wrapper{
+    float:center;
+    width:1024px;
+
+}
+
+#mapa{
+   padding:0px;
+    margin:0px;
+}
+
+
+#content{
+    background:#BFBD93;
+
+    clear:left;
+}
+
+#mapinha {
+background-color: #ffffff;
+padding: 0px;
+margin-left: 400px;
+margin-right: 0px;
+}
+#left {
+float: left;
+width: 400px;
+margin: 0px;
+padding: 0px;
+}
+
+
+
+#footer{ 
+    background-color:#F3F2ED;
+    text-align: center;
+}
+
+#footer p{margin:0;padding:5px 10px}
+
+#footer{clear:left;width:100%}
